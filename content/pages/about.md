@@ -1,12 +1,15 @@
 ---
-title: About Mee
+title: O nas
 template: about-template
 profile_image: /media/profile-image.jpg
 ---
 
-# Hi, I'm John Doe
+# Nieformalna inicjatywa mieszkańców miasta Pruszków
 
-This website is a live example of a Gatsby Starter — it's not a real blog.
-People using this starter may want to add some information to this page about them or their business.
+Strona jest nieformalną inicjatywą mieszkańców miasta Pruszków. Naszym celem jest porządkowanie i publikacja informacji, które mogą być przydatne dla osób przybywającyc do miasta z Ukrainy, a także dla mieszkańców chcących włączyć się w pomoc. 
+Posiadasz aktualne informacje, których brakuje na stronie? Napisz.
+
+Kontakt:
+Wacław Łobos - adres email
 
 

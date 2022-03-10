@@ -2,6 +2,8 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import Layout from '../components/layout';
 import PostList from '../components/post-list';
+import Tags from '../components/tags';
+//import TagList from '../components/taglist';
 import styled from 'styled-components';
 import StyledLink from '../components/styled-link';
 
@@ -10,6 +12,10 @@ const HomePage = ({ data }) => {
   const intro = data.markdownRemark.html;
   const title = data.markdownRemark.frontmatter.title;
 
+  const tags = data.allMarkdownRemark.group.map(tag => {
+    return tag.fieldValue
+  });
+  
   return (
     <Layout title={title}>
       <Intro
@@ -17,9 +23,9 @@ const HomePage = ({ data }) => {
           __html: intro,
         }}
       />
-
+      <Tags tags={tags}/>
       <PostList posts={posts} />
-      <StyledLink
+      {/* <StyledLink
         css={`
           display: block;
           margin-top: var(--size-800);
@@ -31,7 +37,7 @@ const HomePage = ({ data }) => {
         to="/blog"
       >
         View All posts
-      </StyledLink>
+      </StyledLink> */}
     </Layout>
   );
 };
@@ -71,8 +77,12 @@ export const pageQuery = graphql`
     allMarkdownRemark(
       filter: { fields: { contentType: { eq: "posts" } } }
       sort: { order: DESC, fields: frontmatter___date }
-      limit: 9
     ) {
+      group(field: frontmatter___tags) {
+        fieldValue
+        totalCount
+      }
+
       nodes {
         fields {
           slug

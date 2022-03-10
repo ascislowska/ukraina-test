@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
 import Layout from '../components/layout';
+import Tags from '../components/tags';
 import PostList from '../components/post-list';
 import StyledLink from '../components/styled-link';
 import styled from 'styled-components';
@@ -9,25 +10,19 @@ const TagsTemplate = ({ pageContext, data }) => {
   const { tag } = pageContext;
   const { totalCount } = data.allMarkdownRemark;
   const posts = data.allMarkdownRemark.nodes;
-  const title = `Posts tagged ${tag}`;
-
+  const title = `${tag} - najważniejsze informacje`;
+  
+  const tags = data.allMarkdownRemark.group.map(tag => {
+    return tag.fieldValue
+  });
+ 
   return (
     <Layout title={title}>
       <TagsTemplateWrapper>
         <Title>
-          {totalCount} posts tagged "{tag}"
+          {tag} - najważniejsze informacje
         </Title>
-        <Link
-          css={`
-            margin-top: var(--size-400);
-            display: inline-block;
-            color: inherit;
-            text-transform: uppercase;
-          `}
-          to="/tags"
-        >
-          view all tags
-        </Link>
+        <Tags tags={tags}/>
         <PostList posts={posts} />
 
         <StyledLink
@@ -37,7 +32,7 @@ const TagsTemplate = ({ pageContext, data }) => {
           `}
           to="/tags"
         >
-          View All tags
+          Wszystkie tematy
         </StyledLink>
       </TagsTemplateWrapper>
     </Layout>
@@ -56,6 +51,7 @@ const Title = styled.h1`
 
 export const pageQuery = graphql`
   query($tag: String) {
+    
     allMarkdownRemark(
       limit: 2000
       sort: { fields: [frontmatter___date], order: DESC }
@@ -65,6 +61,11 @@ export const pageQuery = graphql`
       }
     ) {
       totalCount
+      group(field: frontmatter___tags) {
+        fieldValue
+        totalCount
+      }
+
       nodes {
         fields {
           slug

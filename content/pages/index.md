@@ -1,8 +1,8 @@
 ---
 template: 'index-template'
-title: 'Gatsby Starter Glass'
+title: 'Pruszków dla Ukrainy'
 ---
 
-#Hello World
+#Pruszków dla Ukrainy
 
-A minimal & beautiful gatsby personal blog starter with nice glassmorphism UI.
+Informacje dla osób przybywających do Pruszkowa w związku z wojną. Informacje zebrane przez mieszkańców Pruszkowa. 
