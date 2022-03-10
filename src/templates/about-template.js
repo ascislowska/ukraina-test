@@ -6,12 +6,10 @@ import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 
 const AboutTemplate = ({ data }) => {
   const { html, frontmatter } = data.markdownRemark;
-  const profileImage = getImage(frontmatter.profile_image);
 
   return (
     <Layout title={frontmatter.title}>
       <AboutWrapper>
-        <AboutImageWrapper image={profileImage} alt="" />
 
         <AboutCopy dangerouslySetInnerHTML={{ __html: html }} />
       </AboutWrapper>
@@ -61,11 +59,6 @@ export const pageQuery = graphql`
       html
       frontmatter {
         title
-        profile_image {
-          childImageSharp {
-            gatsbyImageData(placeholder: BLURRED, formats: PNG, height: 400)
-          }
-        }
       }
     }
   }
