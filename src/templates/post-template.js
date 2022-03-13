@@ -13,9 +13,9 @@ const PostTemplate = ({ data }) => {
     <Layout
       title={frontmatter.title}
       description={frontmatter.description || excerpt}
-      socialImage={
-        frontmatter.social_image ? frontmatter.social_image.absolutePath : ''
-      }
+      // socialImage={
+      //   frontmatter.social_image ? frontmatter.social_image.absolutePath : ''
+      // }
     >
       <PostWrapper>
         <article>
